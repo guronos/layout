@@ -1,258 +1,197 @@
 <template>
-  <v-app app>
-    <v-app-bar app flat height="72" color="#fff" class="px-0">
-      <div class="maxWidthConteiner tet">
-      <v-container
-        class="
-          d-flex
-          flex-row
-          white
-          lighten-5
-          justify-space-between
-          align-center
-          wrapHead
-          fonts
-          px-0
-        "
-      >
-      
-        <div class="logo">
-          <a href="/"><img src="./assets/logo.svg" /></a>
-        </div>
-        <div class="grey lighten-5 d-flex align-center searchWidth">
-          <img src="./assets/search.svg" />
-          <input type="text" placeholder="Поиск" />
-        </div>
-        <div class="menu d-flex align-center">
-          <div>
-            <v-btn
-              class="pa-0 text-decoration-none text-capitalize headerFonts"
-              color="gray"
-              plain
-              @click="togge()"
-              >Каталог</v-btn
-            >
-          </div>
-          <div class="px-4">
-            <a href="/" class="text-decoration-none black--text headerFonts"
-              >Стать автором</a
-            >
-          </div>
+  <v-app>
+    <div class="nav-bar">
+      <v-app-bar flat height="72" color="#fff" class="py-1">
+        <div class="max-width-conteiner nav-bar_position">
+          <v-container
+            class="d-flex flex-row white lighten-5 justify-space-between align-center menu_wrap fonts px-2"
+          >
+            <div class="logo-block">
+              <a href="/"><img src="./assets/logo.svg" width="142px" /></a>
+            </div>
+            <div class="grey lighten-5 d-flex align-center search-width">
+              <img src="./assets/search.svg" class="px-3" />
+              <input
+                type="text"
+                placeholder="Поиск"
+                class="fonts fonts-medium_size"
+              />
+            </div>
+            <div class="menu d-flex align-center menu">
+              <div>
+                <button
+                  class="pa-0 text-decoration-none text-capitalize fonts-medium_size"
+                  @click="togge()"
+                >
+                  <span class="header_fonts px-2"
+                    ><img
+                    style="margin-bottom: -2px;"
+                      src="@/assets/catalogIcon.svg"
+                      height="14px"
+                      width="14px"
+                  /></span>
+                  Каталог
+                </button>
+              </div>
+              <div class="px-4">
+                <a
+                  href="/"
+                  class="text-decoration-none black--text fonts-medium_size px-2"
+                  >Стать автором</a
+                >
+              </div>
 
-          <div>
-            <a href="/" class="text-decoration-none black--text headerFonts">Вход</a>
-          </div>
+              <div>
+                <a href="/" class="text-decoration-none black--text fonts-medium_size"
+                  >Вход</a
+                >
+              </div>
+            </div>
+          </v-container>
         </div>
-       </v-container>
-      </div>
-     
-    </v-app-bar>
-    <v-main>
+        <br />
+      </v-app-bar>
       <v-divider />
+    </div>
+    <v-main>
       <catalog v-if="this.switch" />
-      <v-container class="maxWidthConteiner fonts">
+      <v-container class="max-width-conteiner fonts px-5 py-1">
         <v-container>
           <template v-for="item in items">
-          <a href="/" class="text-decoration-none black--text pr-4 headerFonts" v-if="item.showInMainMenu" :key="item.title">
-            {{            item.title          }}
-          </a>
+            <a
+              href="/"
+              class="text-decoration-none black--text fonts-medium_size fonts_letter-spacing catalog-bar"
+              v-if="item.showInMainMenu"
+              :key="item.title"
+            >
+              {{ item.title }}
+            </a>
           </template>
-        <!-- <div v-for="(item, index) in items" v-if="index % 4 == 0" :key="index" class="pr-2 d-inline-flex"
-          ></div -->
         </v-container>
       </v-container>
-      <div class="blueBackgraund">
-        <v-container class="mb-10 maxWidthConteiner fonts">
+      <div class="backgraund_blue mt-1">
+        <v-container
+          class="mb-10 max-width-conteiner fonts px-8 fonts-medium_size fonts_letter-spacing"
+        >
           <a href="/" class="white--text"
-            >Научно-образовательный портал "большая Российская энциклопедия"</a
+            >Научно-образовательный портал «Большая российская энциклопедия»</a
           >
         </v-container>
       </div>
-      <v-container class="maxWidthConteiner fonts">
+      <v-container class="max-width-conteiner fonts px-8">
         <div>
-          <h3>Научные отрасли</h3>
+          <h3 class="fonts-big_size pt-14">Научные отрасли</h3>
         </div>
-        <div class="mainPostBlock">
+        <div class="main-block pt-5 mainCardsBlock">
           <v-row>
             <v-col lg="3" xl="3" md="12" sm="12" cols="12">
-              <v-card
-                to="/"
-                class="overflow-hidden cardStyle miniBlock mb-6"
-              >
+              <div to="/" class="overflow-hidden card-style card-mini mb-6">
                 <div class="img1"></div>
-                <div class="fontsHeader px-2">
-                  {{ publications[0].title }}
+                <div class="card-mini_text pt-4 px-1">
+                  <div class="fonts_header px-2">
+                    {{ publications[0].title }}
+                  </div>
+                  <div class="fonts_text px-2 card_overflow">
+                    {{ publications[0].text }}
+                  </div>
                 </div>
-                <v-card-text class="fontsText px-2">
-                  {{ publications[0].text }}
-                </v-card-text>
-              </v-card>
-              <div
-                
-                to="/"
-                class="overflow-hidden cardStyle miniBlock"
-              >
-                <!-- <v-img src="./assets/card2.webp"></v-img> -->
+              </div>
+              <div to="/" class="overflow-hidden card-style card-mini">
                 <div class="img2"></div>
-                <div class="fontsHeader px-2">
-                  {{ publications[2].title }}
+                <div class="card-mini_text pt-4 px-1">
+                  <div class="fonts_header px-2">
+                    {{ publications[2].title }}
+                  </div>
+                  <div class="fonts_text px-2 card_overflow">
+                    {{ publications[2].text }}
+                  </div>
                 </div>
-                <v-card-text class="fontsText px-2">
-                  {{ publications[2].text }}
-                </v-card-text>
               </div>
             </v-col>
-            <v-col lg="6" xl="6" md="12" sm="12" cols="12">
-              <v-card
+            <v-col lg="6" xl="6" md="12" sm="12" cols="12" class="pl-4">
+              <div
                 to="/"
-                class="overflow-hidden d-flex flex-column cardStyle bigCardBlock"
+                class="overflow-hidden d-flex flex-column card-style card-big"
               >
-                <div>
-                </div>
+                <div></div>
                 <div class="img3"></div>
-                <div>
-                  <div class="fontsHeader">
+                <div class="card-big_text_padding">
+                  <div class="card-big-header_fonts">
                     {{ publications[1].title }}
                   </div>
-                  <v-card-text class="fontsText">
+                  <div class="fonts-medium_size fonts_letter-spacing card-big_fonts">
                     {{ publications[1].text }}
-                  </v-card-text>
+                  </div>
                 </div>
-              </v-card>
+              </div>
             </v-col>
             <v-col lg="3" xl="3" md="12" sm="12">
-              <v-card flat :height="heightPosts" class="d-flex flex-column">
-                <card flat class="overflow-hidden px-2" to="/">
-                  <div class="fontsHeader">
-                    {{ posts[0].title }}
+              <div class="d-flex flex-column pl-5 posts_width">
+               
+                  <div v-for="post, index in posts" :key="index">
+                    <div class="px-2 py-3">
+                      <div class="fonts_header">
+                        {{ post.title }}
+                      </div>
+                      <div class="posts_overflow fonts fonts_text post-text_size">
+                        {{ post.text }}
+                      </div>
+                    </div>
+                    <v-divider v-if="index < 4" />
                   </div>
-                  <div
-                    class="
-                      overflow-hidden
-                      fonts
-                      fontsText
-                    "
-                  >
-                  {{ posts[0].text }}
-                  </div>
-                </card>
-                <v-divider class="my-2" />
-                <card flat class="overflow-hidden px-2" to="/">
-                  <div class="fontsHeader">
-                    {{ posts[1].title }}
-                  </div>
-                  <div
-                    class="
-                    overflow-hidden
-                      fonts
-                      fontsText
-                    "
-                  >
-                  {{ posts[1].text }}
-                  </div>
-                </card>
-                <v-divider class="my-2" />
-                <card flat class="overflow-hidden px-2" to="/">
-                  <div class="fontsHeader">
-                    {{ posts[2].title }}
-                  </div>
-                  <div
-                    class="
-                    overflow-hidden
-                      fonts
-                      fontsText
-                    "
-                  >
-                  {{ posts[2].text }}
-                  </div>
-                </card>
-                <v-divider class="my-2" />
-                <card flat class="overflow-hidden px-2" to="/">
-                  <div class="fontsHeader">
-                    {{ posts[3].title }}
-                  </div>
-                  <div
-                    class="
-                    overflow-hidden
-                      fonts
-                      fontsText
-                    "
-                  >
-                  {{ posts[3].text }}
-                  </div>
-                </card>
-                <v-divider class="my-2" />
-                <card flat class="overflow-hidden px-2" to="/">
-                  <div class="fontsHeader">
-                    {{ posts[4].title }}
-                  </div>
-                  <div
-                    class="
-                    overflow-hidden
-                      fonts
-                      fontsText
-                    "
-                  >
-                  {{ posts[4].text }}
-                  </div>
-                </card>
-                <v-divider class="my-2" />
-              </v-card>
+              </div>
             </v-col>
           </v-row>
         </div>
-        <v-card class="my-10" flat>
+        <div class="long-block_border my-10">
           <v-img
             src="./assets/buckgroundCard.webp"
-            class="white--text align-center"
+            class="white--text align-center long-block_border"
             height="408px"
           >
             <v-card
               color="rgba(0, 0, 0, 0.7)"
               height="408px"
-              class="px-12 py-10"
+              class="px-14 py-16"
             >
-              <v-card-text>
+              <div class="long-block">
                 <v-chip
-                  class="grey--text"
+                  class="grey--text mx-4"
                   color="rgba(256, 256, 256)"
                   small
                   label
                 >
                   Научные теории, концепции, гипотезы, модели
                 </v-chip>
-              </v-card-text>
-              <v-card-title class="white--text">
-                <h1>Теория Большого взрыва</h1>
-              </v-card-title>
-              <v-card-text class="white--text">
-                {{BIG_EXPLOSION}}
-              </v-card-text>
+                <v-card-title class="white--text">
+                  <h1 class="long-block-fonts_header">Теория Большого взрыва</h1>
+                </v-card-title>
+                <v-card-text class="white--text long-block-text">
+                  {{ BIG_EXPLOSION }}
+                </v-card-text>
+              </div>
             </v-card>
           </v-img>
-        </v-card>
+        </div>
       </v-container>
     </v-main>
   </v-app>
 </template>
-
 <script>
-import Catalog from './components/Catalog.vue';
-import { RUBRICS, PUBLIC_ELEM, MINI_POSTS, BIG_EXPLOSION } from './const/const'
-
+import Catalog from "./components/Catalog.vue";
+import { RUBRICS, PUBLIC_ELEM, MINI_POSTS, BIG_EXPLOSION } from "./const/const";
 export default {
   name: "App",
-
   components: {
-    Catalog
+    Catalog,
   },
 
   data: () => ({
     items: RUBRICS,
-    publications : PUBLIC_ELEM,
+    publications: PUBLIC_ELEM,
     posts: MINI_POSTS,
     switch: false,
-    BIG_EXPLOSION
+    BIG_EXPLOSION,
   }),
   methods: {
     togge() {
@@ -262,52 +201,10 @@ export default {
         this.switch = true;
       }
     },
-    imagePach(pach) {
-      return require(`@/assets/${pach}`);
-    },
-  },
-  computed: {
-    heightFull() {
-      if (
-        this.$vuetify.breakpoint.name === "xs" ||
-        this.$vuetify.breakpoint.name === "sm" ||
-        this.$vuetify.breakpoint.name === "md"
-      ) {
-        console.log(this.$vuetify.breakpoint.name)
-        return 648;
-      } else {
-        return 648;
-      }
-    },
-    heightminiblock() {
-      if (
-        this.$vuetify.breakpoint.name === "xs" ||
-        this.$vuetify.breakpoint.name === "sm" ||
-        this.$vuetify.breakpoint.name === "md"
-      ) {
-        return 648;
-      } else {
-        return 316;
-      }
-    },heightPosts() {
-      if (
-        this.$vuetify.breakpoint.name === "xs" ||
-        this.$vuetify.breakpoint.name === "sm" ||
-        this.$vuetify.breakpoint.name === "md"
-      ) {
-        return 'auto';
-      } else {
-        return 648;
-      }
-    }
-  },
+  }
 };
 </script>
 <style>
-.smallDescription {
-  height: 85px;
-}
-
 .img1 {
   background-image: url("./assets/card1.webp");
   height: 192px;
@@ -326,58 +223,150 @@ export default {
   width: 576px;
   background-size: cover;
 }
-.rubricsMenu{
-  position: fixed;
-  z-index: 2;
-}
-.maxWidthConteiner {
+
+.max-width-conteiner {
   max-width: 1224px;
 }
-.searchWidth {
-  min-width: 651px;
+.search-width {
+  min-width: 601px;
   height: 36px;
+  padding: 6px 12px;
+  box-sizing: border-box;
   border-radius: 5px;
 }
 .fonts {
-  font-family:"HelveticaMac",system-ui,"Segoe UI",Roboto,Arial,"Noto Sans","Liberation Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-family: "HelveticaMac", system-ui, "Segoe UI", Roboto, Arial, "Noto Sans",
+    "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
 }
-.fontsHeader{
-font-size: 14px;
-font-weight: 700;
-color: rgb(0, 0, 0);
+.fonts_header {
+  font-size: 14px;
+  font-weight: 700;
+  color: rgb(0, 0, 0);
 }
-.fontsText{
+.fonts_text {
   color: rgb(102, 102, 102);
   font-size: 12px;
   line-height: 24px;
 }
-.headerFonts {
+.fonts-medium_size {
   font-size: 14px;
 }
-.cardStyle {
-  box-shadow:rgba(0,0,0,.08) 0px 0px 24px 0px;
+.card-style {
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 0px 24px 0px;
+  border-radius: 5px;
 }
-.blueBackgraund {
+.backgraund_blue {
   background-color: #436ee6;
+  height: 48px;
 }
-.mainPostBlock{
+.main-block {
   max-height: 600px;
-  margin-bottom: 20px;
+  margin-bottom: 72px;
 }
-.miniBlock{
-  max-height: 288px;
+.card-mini {
+  height: 288px;
   max-width: 276px;
 }
-.bigCardBlock {
+.card-big {
   width: 576px;
-height:600px;
+  height: 600px;
 }
-.wrapHead {
+.menu_wrap {
   width: 1176px;
   height: 42px;
 }
-.tet{
+.nav-bar_position {
   margin-left: auto;
-    margin-right: auto;
+  margin-right: auto;
+}
+.fonts-big_size {
+  font-size: 20px;
+}
+.card_overflow {
+  height: 48px;
+  overflow: hidden;
+  text-overflow: clip;
+  text-transform: none;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+}
+.card-mini_text {
+  width: 252px;
+  height: 72px;
+}
+.logo-block {
+  width: 164px;
+}
+.menu {
+  height: 24px;
+  width: 272px;
+  margin-left: 20px;
+  padding-bottom: 8px;
+  margin-right: -21px;
+  letter-spacing: 0.35px;
+}
+.fonts_letter-spacing {
+  letter-spacing: 0.35px;
+}
+.catalog-bar {
+  margin-right: 22px;
+}
+.nav-bar {
+  position: sticky;
+  z-index: 12;
+  top: 0;
+}
+.card-big_fonts {
+  line-height: 24px;
+  margin-top: 12px;
+  color: rgb(102, 102, 102);
+}
+.card-big-header_fonts {
+  line-height: 24px;
+  font-size: 18px;
+  font-weight: 700;
+}
+.card-big_text_padding {
+  padding: 24px;
+}
+.post-text_size {
+  width: 246px;
+  height: 72px;
+}
+.posts_width {
+  width: 270px;
+}
+.long-block {
+  width: 726px;
+  height: 264px;
+  overflow: hidden;
+  text-overflow: clip;
+  text-transform: none;
+}
+.long-block-text {
+  height: 168px;
+  overflow: hidden;
+  text-overflow: clip;
+  text-transform: none;
+  letter-spacing: 0.35px;
+  line-height: 24px;
+  font-size: 14px;
+  margin-top: 12px;
+}
+.long-block_border {
+  border-radius: 9px;
+}
+.long-block-fonts_header {
+  font-size: 36px;
+}
+.posts_overflow {
+  overflow: hidden;
+  text-overflow: clip;
+  text-transform: none;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
 }
 </style>

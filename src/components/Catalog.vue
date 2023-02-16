@@ -1,8 +1,8 @@
 <template>
-        <section class="sectionStyle rubricsMenu">
-            <div class="grey lighten-5 maxWidthBlock maxHeight">
-                <v-container class="maxWidthConteiner maxHeight">
-                    <v-tabs class="maxHeight positionTabs"
+        <section class="section_style catalog_position">
+            <div class="grey lighten-5 catalog_width catalog_height">
+                <v-container class="max-width-conteiner catalog_height">
+                    <v-tabs class="catalog_height tabs_position"
             background-color="grey lighten-5"
             slider-color="grey"
           >
@@ -10,16 +10,16 @@
               hide-on-leave
               background-color="#fff"
               color="#fff"
-              class="text-capitalize maxHeight fonts"
+              class="text-capitalize catalog_height fonts"
               @click="toggleTab('fieldOfKnowledge')"
               >Области знаний</v-tab
             >
-            <v-tab class="text-capitalize maxHeight fonts" @click="toggleTab('rubrics')">Рубрики</v-tab>
+            <v-tab class="text-capitalize catalog_height fonts" @click="toggleTab('rubrics')">Рубрики</v-tab>
           </v-tabs>
                 </v-container>
             </div>
-      <v-container class="white lighten-5  maxWidthConteiner fonts">
-        <div class="grey maxWidth">
+      <v-container class="white lighten-5  max-width-conteiner fonts">
+        <div class="grey">
           
         </div>
         <div v-if="variable==='fieldOfKnowledge'">
@@ -27,7 +27,7 @@
             <v-col
               v-for="(item, index) in items"
               :key="index"
-              class="text-caption py-2 font-weight-medium fonts rubricFontSize"
+              class="text-caption py-2 font-weight-medium fonts rubric-fonts"
               lg="3"
               md="4"
               sm="6"
@@ -43,20 +43,20 @@
             <v-col
               v-for="(item, index) in items"
               :key="index"
-              class="text-caption py-2 font-weight-medium fonts rubricFontSize"
+              class="text-caption py-2 font-weight-medium fonts rubric-fonts"
               lg="3"
               md="4"
               sm="6"
               xl="3"
               cols="12"
             >
-              {{ item.title }}+1
+              Что-то отличное от {{ item.title }}
             </v-col>
           </v-row>
         </div>
       </v-container>
-      <div class="grey lighten-5 maxWidthBlock maxHeight fonts">
-          <v-conteiner class="maxWidthConteiner fonts showRubrics px-3">
+      <div class="grey lighten-5 catalog_width catalog_height fonts">
+          <v-conteiner class="max-width-conteiner fonts catalog-more_rubrics px-3">
             <a
             href="/"
             class="text-decoration-none grey--text font-weight-medium"
@@ -87,27 +87,31 @@ export default {
 </script>
 
 <style>
-.sectionStyle {
+.section_style {
     background-color: rgb(255, 255, 255);
     width: 100%;
-    
 }
-.maxWidthBlock {
+.catalog_position {
+  position: fixed;
+  z-index: 2;
+}
+.catalog_width {
     width: auto;
     background-color: antiquewhite;
 }
-.maxHeight {
+.catalog_height {
     height: 48px;
 }
-.positionTabs {
+.tabs_position {
     position: absolute;
     top: 0;
 }
-.rubricFontSize {
+.rubric-fonts {
   font-size: 13px;
   color: black;
+  letter-spacing: 0.195px;
 }
-.showRubrics {
+.catalog-more_rubrics {
     display: block;
     margin-left: auto;
     margin-right: auto;
